@@ -39,6 +39,10 @@ const App = () => {
     item.website.toLowerCase().includes(searchValue.toLowerCase()),
   )
 
+  const onFormSubmit = event => {
+    event.preventDefault()
+  }
+
   return (
     <div className="bg-container">
       <div>
@@ -52,77 +56,78 @@ const App = () => {
           <h1>MANAGER</h1>
         </div>
       </div>
-
-      <div className="input-bg-container">
-        <div className="input-background">
-          <h1>Add New Password</h1>
-          <div>
-            <label htmlFor="website">
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/password-manager-website-img.png "
-                alt="website"
-                className="image-logo"
+      <form onClick={() => onFormSubmit}>
+        <div className="input-bg-container">
+          <div className="input-background">
+            <h1>Add New Password</h1>
+            <div>
+              <label htmlFor="website">
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/password-manager-website-img.png "
+                  alt="website"
+                  className="image-logo"
+                />
+              </label>
+              <input
+                type="text"
+                id="website"
+                placeholder="Enter Website"
+                value={website}
+                onChange={e => setWebsite(e.target.value)}
               />
-            </label>
-            <input
-              type="text"
-              id="website"
-              placeholder="Enter Website"
-              value={website}
-              onChange={e => setWebsite(e.target.value)}
-            />
-          </div>
+            </div>
 
-          <div>
-            <label htmlFor="website">
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/password-manager-username-img.png"
-                alt="username"
-                className="image-logo"
+            <div>
+              <label htmlFor="website">
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/password-manager-username-img.png"
+                  alt="username"
+                  className="image-logo"
+                />
+              </label>
+              <input
+                type="text"
+                id="website"
+                placeholder="Enter Website"
+                value={username}
+                onChange={e => setUsername(e.target.value)}
               />
-            </label>
-            <input
-              type="text"
-              id="website"
-              placeholder="Enter Website"
-              value={username}
-              onChange={e => setUsername(e.target.value)}
-            />
-          </div>
+            </div>
 
-          <div>
-            <label htmlFor="website">
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/password-manager-password-img.png"
-                alt="password"
-                className="image-logo"
+            <div>
+              <label htmlFor="website">
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/password-manager-password-img.png"
+                  alt="password"
+                  className="image-logo"
+                />
+              </label>
+              <input
+                type="password"
+                id="website"
+                placeholder="Enter Website"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
               />
-            </label>
-            <input
-              type="password"
-              id="website"
-              placeholder="Enter Website"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
-          </div>
+            </div>
 
-          <div className="button-container">
-            <button
-              type="button"
-              className="add-button"
-              onClick={handleAddPassword}
-            >
-              Add
-            </button>
+            <div className="button-container">
+              <button
+                type="button"
+                className="add-button"
+                onClick={handleAddPassword}
+              >
+                Add
+              </button>
+            </div>
           </div>
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/password-manager-sm-img.png"
+            alt="password manager"
+            className="password-image"
+          />
         </div>
-        <img
-          src="https://assets.ccbp.in/frontend/react-js/password-manager-sm-img.png"
-          alt="password manager"
-          className="password-image"
-        />
-      </div>
+      </form>
 
       <div>
         <div>
@@ -167,7 +172,7 @@ const App = () => {
               <div key={item.id}>
                 <p>{item.website}</p>
                 <p>{item.username}</p>
-                <p>{showPassword ? starImage : item.password}</p>
+                <p>{showPassword ? item.password : starImage}</p>
                 <img
                   src="https://assets.ccbp.in/frontend/react-js/password-manager-delete-img.png"
                   alt="delete"
